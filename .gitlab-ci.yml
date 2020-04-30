@@ -1,0 +1,23 @@
+
+stages:
+  - deploy
+  
+variables:
+  AWS_DEFAULT_REGION: $S3_BUCKET_REGION
+  BUCKET_NAME: $S3_BUCKET_NAME
+
+build:
+  stage: build
+  script:
+    - git pull origin master
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - dist/ 
+
+deploy:
+  image: "python:latest" 
+  stage: deploy
+  script:
+    - aws s3 cp index.html s3://www.rahulr.me
