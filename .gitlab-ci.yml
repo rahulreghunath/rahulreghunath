@@ -9,5 +9,9 @@ variables:
 deploy:
   image: "python:latest" 
   stage: deploy
+  before_script:
+    - echo ${BUCKET_NAME}
+    - pip install awscli # Install the SDK
+
   script:
     - aws s3 cp index.html s3://www.rahulr.me
