@@ -32,13 +32,21 @@ jobs:
       - name: Install dependencies
         run: npm install      
       - name: Build      
-        run: CI=false npm run build    
-      - name: Deploy to S3        
+        run: CI=false npm run build 
+      - name: Deploy to S3 www domain       
         uses: shallwefootball/s3-upload-action@master
         with:
           aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
-          aws_bucket: ${{ secrets.S3_BUCKET_NAME }}
+          aws_bucket: ${{ secrets.S3_BUCKET_NAME_WWW }}
+          source_dir: 'build'
+          destination_dir: ''   
+      - name: Deploy to S3 root domain       
+        uses: shallwefootball/s3-upload-action@master
+        with:
+          aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+          aws_bucket: ${{ secrets.S3_BUCKET_NAME_ROOT }}
           source_dir: 'build'
           destination_dir: ''
           
