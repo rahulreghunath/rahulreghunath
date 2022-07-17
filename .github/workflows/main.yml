@@ -31,9 +31,10 @@ jobs:
             ${{ runner.os }}-gatsby-site-build-
       - name: Install dependencies
         run: npm install      
-      - name: Build        
+      - name: Build      
+        run: CI=false npm run build    
       - name: Deploy to S3        
-      - uses: shallwefootball/s3-upload-action@master
+        uses: shallwefootball/s3-upload-action@master
         with:
           aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
