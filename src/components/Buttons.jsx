@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { GitHub, LinkedIn, Resume, Email, } from './../icons'
+import { GitHub, LinkedIn, Resume, Email,Stack } from './../icons'
 
 const DATA = [
     {
@@ -17,8 +17,14 @@ const DATA = [
     {
         href: "https://stackoverflow.com/users/8609720/rahul-reghunath",
         aria: "Visit stackoverflow profile",
-        icon: <Resume />,
+        icon: <Stack />,
         label: "stackoverflow",
+    },
+    {
+        href: "https://rahul-r-public.s3.ap-south-1.amazonaws.com/resume_rahul_r.pdf",
+        aria: "Download Resume",
+        icon: <Resume />,
+        label: "Resume",
     },
     {
         href: "mailto:me@rahulr.me",
